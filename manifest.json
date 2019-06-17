@@ -1,0 +1,35 @@
+{  "version":"1.0",
+   "background": {
+      "persistent": true,
+      "scripts": ["./js/bt_bg.js" ]
+   },
+   "browser_action": {
+      "default_icon": "./img/train_icon_16.png",
+      "default_popup": "popup.html"
+   },
+   "content_scripts": [ {
+      "js": [ "./js/bt_content.js" ],
+      "matches": [ "https://*/*", "http://*/*" ]
+   }, {
+      "css": [ "./css/irctc.css" ],
+      "js": ["./js/arrive.min.js", "./tesseract/tesseract.min.js","./js/bt_irctc.js" ],
+      "matches": [ "https://www.irctc.co.in/*/*" ]
+   } ],
+   "current_locale": "10",
+   "description": "Book tickets",
+   "icons": {
+      "128": "./img/icon128.png",
+      "16": "./img/icon.png",
+      "48": "./img/icon48.png"
+   },
+   "manifest_version": 2,
+   "name": "Book Ticket",
+   "options_page": "irctcform.html",
+   "permissions": [ "https://*/*", "http://*/*", "storage", "tabs", "webRequest", "webRequestBlocking" ],
+   "short_name": "Ticket booking",
+   "web_accessible_resources": [
+      "tesseract/worker.min.js",
+      "tesseract/tessearct-core.wasm.js",
+      "tesseract/traineddata/*.traineddata.gz"
+    ]  
+}
